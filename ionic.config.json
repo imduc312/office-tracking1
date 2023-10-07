@@ -1,0 +1,7 @@
+{
+  "name": "office-tracking",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
