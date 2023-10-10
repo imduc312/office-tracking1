@@ -8,44 +8,46 @@ import { IonModal } from '@ionic/angular';
 })
 export class HomePage {
   @ViewChild(IonModal) modal!: IonModal;
+  status: string = '';
 
   name!: string;
-  selectedData: { [key: string]: string } = {};
+  selectedData: any;
   cancel() {
-    this.modal.dismiss(null, 'cancel');
+    this.isOpen = !this.isOpen;
   }
 
   confirm() {
     const dataFromSelectConfim = this.selectedData;
-    console.log(dataFromSelectConfim);
+
+    // console.log(dataFromSelectConfim);
+    // console.log('=status===================================');
+    // console.log('this.status', this.status);
+    // console.log('======status==============================');
+
+    this.selectedData.morning = this.status;
   }
   selectStatus(selected: any) {
     this.selectedData = selected;
   }
   constructor() {}
 
+  getColor(text: string) {
+    return text === 'Office'
+      ? 'warning'
+      : text === 'Online'
+      ? 'success'
+      : text === 'Offline'
+      ? 'danger'
+      : '';
+  }
+
   // onclick
   isOpen: boolean = false;
-  onClickOpenModal(
-    isOpen: boolean,
-    data?: {
-      dayNumber: string;
-      dayText: string;
-      morning: string;
-      afternoon: string;
-      evening: string;
-    }
-  ) {
+  onClickOpenModal(isOpen: boolean, selectedData: any) {
     this.isOpen = isOpen;
-    if (data) {
-      const daily = this.dailies.find((d) =>
-        d.schedules.some((s) => s === data)
-      );
-      if (daily) {
-        daily.selectedStatus = ''; // Đặt lại trạng thái khi mở modal
-      }
-    }
+    this.selectedData = selectedData;
   }
+
   dailies = [
     {
       user: {
@@ -71,7 +73,7 @@ export class HomePage {
         {
           dayNumber: '04',
           dayText: 'Wed',
-          morning: 'Office',
+          morning: 'Online',
           afternoon: 'Office',
           evening: 'Offline',
         },
@@ -109,4 +111,3 @@ export class HomePage {
     },
   ];
 }
-// test log

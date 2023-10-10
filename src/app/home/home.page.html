@@ -16,26 +16,24 @@
       <div class="name_daily">{{ scheduleDate.dayText }}</div>
       <!-- button -->
       <div class="btn_daily">
-        <button
-          id="open-custom-dialog"
-          expand="block"
-          [class]="'custom-botton'"
+        <ion-button
+          class="morning"
+          [color]="getColor(scheduleDate.morning)"
           (click)="onClickOpenModal(true, scheduleDate)"
         >
-          {{selectedData}}
-        </button>
-        <button
-          id="open-custom-dialog"
-          expand="block"
-          [class]="'custom-botton'"
+        </ion-button>
+        <ion-button
+          class="morning"
+          [color]="getColor(scheduleDate.afternoon)"
           (click)="onClickOpenModal(true, scheduleDate)"
-        ></button>
-        <button
-          id="open-custom-dialog"
-          expand="block"
-          [class]="'custom-botton'"
+        >
+        </ion-button>
+        <ion-button
+          class="morning"
+          [color]="getColor(scheduleDate.evening)"
           (click)="onClickOpenModal(true, scheduleDate)"
-        ></button>
+        >
+        </ion-button>
       </div>
     </div>
   </div>
@@ -47,37 +45,25 @@
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button (click)="cancel() ; onClickOpenModal(false)"
-              >Cancel
-            </ion-button>
+            <ion-button (click)="cancel()">Close</ion-button>
           </ion-buttons>
           <ion-title>Welcome</ion-title>
           <ion-buttons slot="end">
-            <ion-button
-              (click)="confirm() ;  onClickOpenModal(false)"
-              [strong]="true"
-              >Confirm</ion-button
-            >
+            <ion-button (click)="confirm()" [strong]="true">Save</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
       <!-- 3 thẻ sellect -->
       <ion-content class="ion-padding">
-        <ion-list lines="none">
-          <ion-item button="true" detail="false">
-            <ion-icon name="person-circle"></ion-icon>
-            <ion-label (click)="selectStatus('Office')">Office</ion-label>
-          </ion-item>
-          <ion-item button="true" detail="false">
-            <ion-icon name="person-circle"></ion-icon>
-            <ion-label (click)="selectStatus('Online')">Online</ion-label>
-          </ion-item>
-          <ion-item button="true" detail="false">
-            <ion-icon name="person-circle"></ion-icon>
-            <ion-label (click)="selectStatus('Offline')">Offline</ion-label>
-          </ion-item>
-        </ion-list>
+        <ion-radio-group [(ngModel)]="status">
+          <ion-radio value="Online" labelPlacement="end">Online</ion-radio
+          ><br />
+          <ion-radio value="Offline" labelPlacement="end">Offline</ion-radio
+          ><br />
+          <ion-radio value="Office" labelPlacement="end">Office</ion-radio
+          ><br />
+        </ion-radio-group>
       </ion-content>
-    </ng-template>
-  </ion-modal>
+    </ng-template> </ion-modal
+  >`
 </ion-content>
