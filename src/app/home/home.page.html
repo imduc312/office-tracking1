@@ -1,20 +1,83 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<div id="container">
+  <div class="app_name">OFFICE TRACKING</div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="time_sheet" *ngFor="let daily of dailies">
+    <div class="user">
+      <div class="avt">
+        <img [src]="daily.user.avatar" alt="" />
+      </div>
+      <div class="name_user">{{ daily.user.name }}</div>
+    </div>
+    <div
+      *ngFor="let scheduleDate of daily.schedules.slice(0, 7)"
+      class="schdules"
+    >
+      <div class="name_daily">{{ scheduleDate.dayNumber }}</div>
+      <div class="name_daily">{{ scheduleDate.dayText }}</div>
+      <!-- button -->
+      <div class="btn_daily">
+        <button
+          id="open-custom-dialog"
+          expand="block"
+          [class]="'custom-botton'"
+          (click)="onClickOpenModal(true, scheduleDate)"
+        >
+          {{selectedData}}
+        </button>
+        <button
+          id="open-custom-dialog"
+          expand="block"
+          [class]="'custom-botton'"
+          (click)="onClickOpenModal(true, scheduleDate)"
+        ></button>
+        <button
+          id="open-custom-dialog"
+          expand="block"
+          [class]="'custom-botton'"
+          (click)="onClickOpenModal(true, scheduleDate)"
+        ></button>
+      </div>
+    </div>
   </div>
+</div>
+<!-- MODAL1 -->
+<ion-content class="ion-padding">
+  <ion-modal [isOpen]="isOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel() ; onClickOpenModal(false)"
+              >Cancel
+            </ion-button>
+          </ion-buttons>
+          <ion-title>Welcome</ion-title>
+          <ion-buttons slot="end">
+            <ion-button
+              (click)="confirm() ;  onClickOpenModal(false)"
+              [strong]="true"
+              >Confirm</ion-button
+            >
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <!-- 3 thẻ sellect -->
+      <ion-content class="ion-padding">
+        <ion-list lines="none">
+          <ion-item button="true" detail="false">
+            <ion-icon name="person-circle"></ion-icon>
+            <ion-label (click)="selectStatus('Office')">Office</ion-label>
+          </ion-item>
+          <ion-item button="true" detail="false">
+            <ion-icon name="person-circle"></ion-icon>
+            <ion-label (click)="selectStatus('Online')">Online</ion-label>
+          </ion-item>
+          <ion-item button="true" detail="false">
+            <ion-icon name="person-circle"></ion-icon>
+            <ion-label (click)="selectStatus('Offline')">Offline</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
