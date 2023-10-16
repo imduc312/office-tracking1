@@ -9,6 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { SearchPageComponent } from './search-page/search-page.component';
+// lấy dữ liệu sever
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     CommonModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

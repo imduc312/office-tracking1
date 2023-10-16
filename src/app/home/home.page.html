@@ -1,6 +1,5 @@
 <div id="container">
   <div class="app_name">OFFICE TRACKING</div>
-
   <div class="time_sheet" *ngFor="let daily of dailies">
     <div class="user">
       <div class="avt">
@@ -17,53 +16,40 @@
       <!-- button -->
       <div class="btn_daily">
         <ion-button
+          id="open-action-sheet"
           class="morning"
           [color]="getColor(scheduleDate.morning)"
-          (click)="onClickOpenModal(true, scheduleDate)"
+          (click)="onClickButtonDay(true, scheduleDate, 'morning')"
         >
         </ion-button>
         <ion-button
-          class="morning"
+          id="open-action-sheet"
+          class="afternoon"
           [color]="getColor(scheduleDate.afternoon)"
-          (click)="onClickOpenModal(true, scheduleDate)"
+          (click)="onClickButtonDay(true, scheduleDate, 'afternoon' )"
         >
         </ion-button>
         <ion-button
-          class="morning"
+          id="open-action-sheet"
+          class="evening"
           [color]="getColor(scheduleDate.evening)"
-          (click)="onClickOpenModal(true, scheduleDate)"
+          (click)="onClickButtonDay(true, scheduleDate, 'evening')"
         >
         </ion-button>
       </div>
     </div>
   </div>
 </div>
-<!-- MODAL1 -->
-<ion-content class="ion-padding">
-  <ion-modal [isOpen]="isOpen">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="cancel()">Close</ion-button>
-          </ion-buttons>
-          <ion-title>Welcome</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="confirm()" [strong]="true">Save</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <!-- 3 thẻ sellect -->
-      <ion-content class="ion-padding">
-        <ion-radio-group [(ngModel)]="status">
-          <ion-radio value="Online" labelPlacement="end">Online</ion-radio
-          ><br />
-          <ion-radio value="Offline" labelPlacement="end">Offline</ion-radio
-          ><br />
-          <ion-radio value="Office" labelPlacement="end">Office</ion-radio
-          ><br />
-        </ion-radio-group>
-      </ion-content>
-    </ng-template> </ion-modal
-  >`
-</ion-content>
+
+<!-- MODAL 2 -->
+<div class="containerModal">
+  <ion-action-sheet
+    class="my-custom-class"
+    [isOpen]="isOpen"
+    trigger="open-action-sheet"
+    header="Select Option"
+    [buttons]="actionSheetButtons"
+    (willDismiss)="ReturnResult($event)"
+    [backdropDismiss]="false"
+  ></ion-action-sheet>
+</div>

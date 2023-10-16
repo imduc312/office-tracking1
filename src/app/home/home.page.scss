@@ -2,17 +2,22 @@
   text-align: center;
   color: black;
   line-height: 22px;
-  overflow: auto; /* hoặc overflow: scroll; */
-  margin-top: 40px;
+  overflow: auto;
+  margin: 40px 5px 0 5px;
 }
 .app_name {
   margin-bottom: 20px;
+  font-weight: 700px;
+  color: red;
+}
+.input-search {
+  margin: 30px 10px;
 }
 .time_sheet {
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
-  font-size: 12px;
+  font-size: 14px;
 }
 .schdules {
   padding: 0 6px;
@@ -21,10 +26,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 6px;
+  margin-right: 10px;
 }
 img {
-  width: 50px;
+  width: 70px;
   border-radius: 99999px;
 }
 .schedules {
@@ -32,9 +37,11 @@ img {
   border: 1px solid #f5f5f5;
 }
 .name_daily {
-  margin: 0;
-  border-bottom: 1px solid #ccc;
   margin: 3px 0;
+  background-color: yellow;
+  border-bottom: 1px solid #ccc;
+  border-radius: 5px;
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
 }
 .btn_daily {
   display: flex;
@@ -42,15 +49,6 @@ img {
   align-items: center;
   padding-top: 4px;
 }
-.custom-botton {
-
-  font-size: 12px;
-  padding: 4px;
-  border-radius: 5px;
-  margin-bottom: 2px;
-  background-color: gray;
-}
-
 ion-modal#example-modal {
   --width: fit-content;
   --min-width: 250px;
@@ -65,15 +63,22 @@ ion-modal#example-modal h1 {
 
 ion-modal#example-modal ion-icon {
   margin-right: 6px;
-
   width: 48px;
   height: 48px;
-
   padding: 4px 0;
-
   color: #aaaaaa;
 }
 
 ion-modal#example-modal .wrapper {
   margin-bottom: 10px;
+}
+.ion-padding {
+  background-color: black !important;
+}
+.action-sheet-button {
+  color: green !important ;
+  font-size: 50px;
+}
+.my-custom-class {
+  --button-color: #fff;
 }
